@@ -22,3 +22,9 @@ count_per_movie.describe()
 
 # Graph
 bins_values = [0, 1, 5, 15, 50, 100, 150, 300, count_per_movie["rating_count"].max()]
+
+bins = pd.cut(count_per_movie['rating_count'], bins_values)
+groups = count_per_movie.groupby(by=bins)['rating_count'].count()
+groups.plot(kind='bar')
+#show graph in window
+plt.show()
